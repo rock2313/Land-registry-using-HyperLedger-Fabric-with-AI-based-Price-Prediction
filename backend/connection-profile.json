@@ -1,0 +1,62 @@
+{
+  "name": "landregistry-network",
+  "version": "1.0.0",
+  "client": {
+    "organization": "Org1",
+    "connection": {
+      "timeout": {
+        "peer": {
+          "endorser": "300"
+        },
+        "orderer": "300"
+      }
+    }
+  },
+  "organizations": {
+    "Org1": {
+      "mspid": "Org1MSP",
+      "peers": [
+        "peer0.org1.landregistry.com"
+      ],
+      "certificateAuthorities": [
+        "ca.org1.landregistry.com"
+      ]
+    }
+  },
+  "peers": {
+    "peer0.org1.landregistry.com": {
+      "url": "grpcs://localhost:7051",
+      "tlsCACerts": {
+        "path": "../crypto-config/peerOrganizations/org1.landregistry.com/peers/peer0.org1.landregistry.com/tls/ca.crt"
+      },
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.org1.landregistry.com",
+        "hostnameOverride": "peer0.org1.landregistry.com"
+      }
+    }
+  },
+  "orderers": {
+    "orderer.landregistry.com": {
+      "url": "grpcs://localhost:7050",
+      "tlsCACerts": {
+        "path": "../crypto-config/ordererOrganizations/landregistry.com/orderers/orderer.landregistry.com/tls/ca.crt"
+      },
+      "grpcOptions": {
+        "ssl-target-name-override": "orderer.landregistry.com",
+        "hostnameOverride": "orderer.landregistry.com"
+      }
+    }
+  },
+  "certificateAuthorities": {
+    "ca.org1.landregistry.com": {
+      "url": "https://localhost:7054",
+      "caName": "ca-org1",
+      "tlsCACerts": {
+        "path": "../crypto-config/peerOrganizations/org1.landregistry.com/ca/ca.org1.landregistry.com-cert.pem"
+      },
+      "httpOptions": {
+        "verify": false
+      }
+    }
+  }
+}
